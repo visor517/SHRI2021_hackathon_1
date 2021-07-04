@@ -144,29 +144,49 @@
 
         // parseTree_2(myTree)
 
-        const string = '(){}[]([])'
+        // const string = '(){}[]([])'
 
-        function parseBrackets(string) {
-            let memory = []
-            const open = ['(', '[', '{']
-            const close = [')', ']', '}']
+        // function parseBrackets(string) {
+        //     let memory = []
+        //     const open = ['(', '[', '{']
+        //     const close = [')', ']', '}']
 
-            let arr = string.split('')
+        //     let arr = string.split('')
 
-            for (let i = 0; i < arr.length; i++) {
-                if (open.indexOf(arr[i]) != -1) {
-                    memory.push(arr[i])
+        //     for (let i = 0; i < arr.length; i++) {
+        //         if (open.indexOf(arr[i]) != -1) {
+        //             memory.push(arr[i])
+        //         }
+        //         if (close.indexOf(arr[i]) != -1) {
+        //             if (open.indexOf(memory.pop()) != close.indexOf(arr[i])) return false //"Ошибка: скобки не совпали или стек уже пуст"
+        //         }
+        //     }
+
+        //     if (memory.length > 0) return false //"Ошибк: стек не опустел"
+        //     return true
+        // }
+
+        // console.log(parseBrackets(string))
+
+        function task_7(number) {   //number > 2
+            let memory = [2]
+
+            for (let temp = 3; temp <= number; temp++) {
+                let isNatural = true
+                for (let i = 0; i < memory.length; i++) {
+                    if (temp % memory[i] == 0) {
+                        isNatural = false
+                        break
+                    }
                 }
-                if (close.indexOf(arr[i]) != -1) {
-                    if (open.indexOf(memory.pop()) != close.indexOf(arr[i])) return false //"Ошибка: скобки не совпали или стек уже пуст"
+                if (isNatural) {
+                    console.log(temp)
+                    memory.push(temp)
                 }
             }
-
-            if (memory.length > 0) return false //"Ошибк: стек не опустел"
-            return true
         }
 
-        console.log(parseBrackets(string))
+        task_7(50)
 
     </script>
 </body>
