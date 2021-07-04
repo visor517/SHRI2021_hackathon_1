@@ -108,23 +108,42 @@
             ]
         }
 
-        function parseTree(tree) {
-            let cur_node;
-            let memory = [tree];
+        // function parseTree(tree) {
+        //     let cur_node
+        //     let memory = [tree]
 
-            while (cur_node = memory.pop()) {
+        //     while (cur_node = memory.pop()) {
 
-                console.log(cur_node.val);
+        //         console.log(cur_node.val)
+
+        //         if (cur_node.next != null) {
+        //             for (let i = cur_node.next.length - 1; i >= 0; i--) {
+        //                 memory.push(cur_node.next[i])
+        //             }
+        //         }
+        //     }
+        // }
+
+        // parseTree(myTree)
+
+        function parseTree_2(tree) {
+            let cur_node
+            let memory = [tree]
+
+            while (cur_node = memory.shift()) {
+
+                console.log(cur_node.val)
 
                 if (cur_node.next != null) {
-                    for (let i = cur_node.next.length - 1; i >= 0; i--) {
-                        memory.push(cur_node.next[i]);
+                    for (let i = 0; i < cur_node.next.length; i++) {
+                        memory.push(cur_node.next[i])
                     }
                 }
             }
         }
 
-        parseTree(myTree)
+        parseTree_2(myTree)
+
 
     </script>
 </body>
