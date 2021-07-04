@@ -114,16 +114,12 @@
 
             while (cur_node = memory.pop()) {
 
-                while (true) {
-                    console.log(cur_node.val);
+                console.log(cur_node.val);
 
-                    if (cur_node.next == null) break;
-
-                    for (let i = cur_node.next.length - 1; i > 0; i--) {
+                if (cur_node.next != null) {
+                    for (let i = cur_node.next.length - 1; i >= 0; i--) {
                         memory.push(cur_node.next[i]);
                     }
-
-                    cur_node = cur_node.next[0];
                 }
             }
         }
