@@ -76,37 +76,37 @@
         // }
         // console.log(mysort_3([1, 3, 8, 5, 7, 0, 2]))
 
-        let myTree = {
-            val: 1,
-            next: [
-                {
-                    val: 2,
-                    next: [
-                        {
-                            val: 3,
-                            next: null
-                        },
-                        {
-                            val: 4,
-                            next: null
-                        },
-                        {
-                            val: 5,
-                            next: null
-                        }
-                    ]
-                },
-                {
-                    val: 6,
-                    next: [
-                        {
-                            val: 7,
-                            next: null
-                        }
-                    ]
-                }
-            ]
-        }
+        // let myTree = {
+        //     val: 1,
+        //     next: [
+        //         {
+        //             val: 2,
+        //             next: [
+        //                 {
+        //                     val: 3,
+        //                     next: null
+        //                 },
+        //                 {
+        //                     val: 4,
+        //                     next: null
+        //                 },
+        //                 {
+        //                     val: 5,
+        //                     next: null
+        //                 }
+        //             ]
+        //         },
+        //         {
+        //             val: 6,
+        //             next: [
+        //                 {
+        //                     val: 7,
+        //                     next: null
+        //                 }
+        //             ]
+        //         }
+        //     ]
+        // }
 
         // function parseTree(tree) {
         //     let cur_node
@@ -126,24 +126,47 @@
 
         // parseTree(myTree)
 
-        function parseTree_2(tree) {
-            let cur_node
-            let memory = [tree]
+        // function parseTree_2(tree) {
+        //     let cur_node
+        //     let memory = [tree]
 
-            while (cur_node = memory.shift()) {
+        //     while (cur_node = memory.shift()) {
 
-                console.log(cur_node.val)
+        //         console.log(cur_node.val)
 
-                if (cur_node.next != null) {
-                    for (let i = 0; i < cur_node.next.length; i++) {
-                        memory.push(cur_node.next[i])
-                    }
+        //         if (cur_node.next != null) {
+        //             for (let i = 0; i < cur_node.next.length; i++) {
+        //                 memory.push(cur_node.next[i])
+        //             }
+        //         }
+        //     }
+        // }
+
+        // parseTree_2(myTree)
+
+        const string = '(){}[]([])'
+
+        function parseBrackets(string) {
+            let memory = []
+            const open = ['(', '[', '{']
+            const close = [')', ']', '}']
+
+            let arr = string.split('')
+
+            for (let i = 0; i < arr.length; i++) {
+                if (open.indexOf(arr[i]) != -1) {
+                    memory.push(arr[i])
+                }
+                if (close.indexOf(arr[i]) != -1) {
+                    if (open.indexOf(memory.pop()) != close.indexOf(arr[i])) return false //"Ошибка: скобки не совпали или стек уже пуст"
                 }
             }
+
+            if (memory.length > 0) return false //"Ошибк: стек не опустел"
+            return true
         }
 
-        parseTree_2(myTree)
-
+        console.log(parseBrackets(string))
 
     </script>
 </body>
