@@ -55,26 +55,81 @@
         // }
         // console.log(mysort_2([0]))
 
-        function mysort_3(arr) {
+        // function mysort_3(arr) {
 
-            for (let i = 1; i < arr.length; i++) {
-                let temp = arr[i]
-                for (let j = i - 1; j >= 0; j--) {
-                    if (arr[j] > temp) {
-                        arr[j + 1] = arr[j]
-                        if (j == 0) {
-                            arr[j] = temp
+        //     for (let i = 1; i < arr.length; i++) {
+        //         let temp = arr[i]
+        //         for (let j = i - 1; j >= 0; j--) {
+        //             if (arr[j] > temp) {
+        //                 arr[j + 1] = arr[j]
+        //                 if (j == 0) {
+        //                     arr[j] = temp
+        //                 }
+        //             }
+        //             else {
+        //                 arr[j + 1] = temp
+        //                 break
+        //             }
+        //         }
+        //     }
+        //     return (arr)
+        // }
+        // console.log(mysort_3([1, 3, 8, 5, 7, 0, 2]))
+
+        let myTree = {
+            val: 1,
+            next: [
+                {
+                    val: 2,
+                    next: [
+                        {
+                            val: 3,
+                            next: null
+                        },
+                        {
+                            val: 4,
+                            next: null
+                        },
+                        {
+                            val: 5,
+                            next: null
                         }
+                    ]
+                },
+                {
+                    val: 6,
+                    next: [
+                        {
+                            val: 7,
+                            next: null
+                        }
+                    ]
+                }
+            ]
+        }
+
+        function parseTree(tree) {
+            let cur_node;
+            let memory = [tree];
+
+            while (cur_node = memory.pop()) {
+
+                while (true) {
+                    console.log(cur_node.val);
+
+                    if (cur_node.next == null) break;
+
+                    for (let i = cur_node.next.length - 1; i > 0; i--) {
+                        memory.push(cur_node.next[i]);
                     }
-                    else {
-                        arr[j + 1] = temp
-                        break
-                    }
+
+                    cur_node = cur_node.next[0];
                 }
             }
-            return (arr)
         }
-        console.log(mysort_3([1, 3, 8, 5, 7, 0, 2]))
+
+        parseTree(myTree)
+
     </script>
 </body>
 
