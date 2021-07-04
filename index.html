@@ -58,20 +58,17 @@
         function mysort_3(arr) {
 
             for (let i = 1; i < arr.length; i++) {
-                if (arr[i] < arr[i - 1]) {
-                    let temp = arr[i]
-                    for (let j = i - 1; j >= 0; j--) {
-                        if (arr[j] > temp) {
-                            arr[j + 1] = arr[j]
-                            if (j == 0) {
-                                arr[j] = temp
-                                break
-                            }
+                let temp = arr[i]
+                for (let j = i - 1; j >= 0; j--) {
+                    if (arr[j] > temp) {
+                        arr[j + 1] = arr[j]
+                        if (j == 0) {
+                            arr[j] = temp
                         }
-                        else {
-                            arr[j + 1] = temp
-                            break
-                        }
+                    }
+                    else {
+                        arr[j + 1] = temp
+                        break
                     }
                 }
             }
